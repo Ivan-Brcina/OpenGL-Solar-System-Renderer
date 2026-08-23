@@ -93,12 +93,12 @@ void SolarSystem::run() {
     deltaTime = currentTime - lastFrameTime;
     lastFrameTime = currentTime;
     processInput(window_, camera);
-    // camera->processCameraDirMovement(window_, deltaTime);
+    camera->processCameraDirMovement(window_, deltaTime);
 
-    // glm::vec3 cameraPosition = earth.center - (0.15f * earth.center) + glm::vec3(0.0f,5.0f,5.0f); //TODO temporary
-    glm::vec3 cameraPosition = earth.center + (5.0f * glm::normalize(glm::cross(earth.center, glm::vec3(0.0f,1.0f,0.0f))));
+    // // glm::vec3 cameraPosition = earth.center - (0.15f * earth.center) + glm::vec3(0.0f,5.0f,5.0f); //TODO temporary
+    // glm::vec3 cameraPosition = earth.center + (5.0f * glm::normalize(glm::cross(earth.center, glm::vec3(0.0f,1.0f,0.0f))));
                                                                                                   
-    camera->setPosition(cameraPosition);
+    // camera->setPosition(cameraPosition);
 
     updatePositions(deltaTime); 
     renderer.render(sun, earth, moon, stars, camera);
