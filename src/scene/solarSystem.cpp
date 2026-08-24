@@ -70,7 +70,7 @@ void SolarSystem::drawGUI() {
   ImGui::Begin("Config");
   ImGui::SliderFloat("Exposure", &sun.exposure, 0.1f, 5.0f, NULL ,ImGuiSliderFlags_NoInput);
   ImGui::SliderFloat("CameraSpeed", &camera->_speed, 1.0f, 25.0f, NULL ,ImGuiSliderFlags_NoInput);
-  ImGui::SliderFloat("Days per second", &daysPerSecond, 0.01f, 10.0f, NULL, ImGuiSliderFlags_NoInput);
+  ImGui::SliderFloat("Days per second", &daysPerSecond, 0.001f, 10.0f, NULL, ImGuiSliderFlags_NoInput);
   ImGui::Text("Framerate: %f", ImGui::GetIO().Framerate);
 
   frameTimes[offset] = ImGui::GetIO().DeltaTime * 1000.0f;
