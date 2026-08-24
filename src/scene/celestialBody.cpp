@@ -8,9 +8,9 @@ Sun::Sun(GLuint vao, unsigned int idxCount) : vao(vao), idxCount(idxCount) {
   spinSpeed = 180.0f;
   spinAngle = 0.0f;
   blurSpread = 3.0f;
-  emissionStrength = 5.0f;
+  emissionStrength = 20.0f;
   exposure = 0.25f;
-  diffuseTexture = textureFromFile("assets/8k_sun.jpg");
+  diffuseTexture = textureFromFile("assets/2k_sun.jpg");
 }
 
 Earth::Earth(GLuint vao, unsigned int idxCount) : vao(vao), idxCount(idxCount) {
@@ -27,8 +27,7 @@ Earth::Earth(GLuint vao, unsigned int idxCount) : vao(vao), idxCount(idxCount) {
   diffuseTextureDay = textureFromFile("assets/8k_earth_daymap.jpg");
   diffuseTextureNight = textureFromFile("assets/8k_earth_nightmap.jpg");
   diffuseTextureClouds = textureFromFile("assets/8k_earth_clouds.jpg");
-  specularMap = textureFromFile("assets/8k_earth_specular_map.png", false);
-  normalMap = textureFromFile("assets/8k_earth_normal_map.jpg", false);
+  specularMap = textureFromFile("assets/2k_earth_specular_map.png", false);
   toggleNormalMapping = false;
 }
 
@@ -38,7 +37,7 @@ Moon::Moon(GLuint vao, unsigned int idxCount) : vao(vao), idxCount(idxCount) {
   orbitAngle = 0.0f;
   spinSpeed = 1.0f;
   orbitSpeed = 90.0f;
-  diffuseTexture = textureFromFile("assets/8k_moon.jpg");
+  diffuseTexture = textureFromFile("assets/2k_moon.jpg");
 }
 
 Stars::Stars(GLuint vao) : vao(vao) {

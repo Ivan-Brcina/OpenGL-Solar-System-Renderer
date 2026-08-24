@@ -40,7 +40,6 @@ struct Earth {
     GLuint    diffuseTextureDay = 0;
     GLuint    diffuseTextureNight = 0;
     GLuint    specularMap = 0;
-    GLuint    normalMap = 0;
     GLuint    diffuseTextureClouds = 0;
 
     bool toggleNormalMapping;
