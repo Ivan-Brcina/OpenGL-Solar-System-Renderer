@@ -24,7 +24,7 @@ float calculateShadow(vec4 fragPositionLightSpace) {
   if (currentDepth > 1.0)
     return 0.0;
 
-  float bias = max(0.001 * (1.0 - dot(fs_in.WorldNormal, fs_in.WorldLightDirection)), 0.0001);
+  float bias = max(0.005 * (1.0 - dot(fs_in.WorldNormal, fs_in.WorldLightDirection)), 0.0005);
 
   float shadow = 0.0;
   vec2 texelSize = 1.0 / textureSize(depthMap, 0);
@@ -71,7 +71,7 @@ void main() {
   float specularColor = texture(specularMap, fs_in.TexCoords).r;
   vec3 specular = specAmount * specularColor * vec3(1.0) * step(0.0, diff);
 
-  vec3 lighting = (ambient + (1.0 - shadow) * (diffuse + specular)) * surfaceColor;
+  vec3 lighting = (ambient + (1.0 - shadow) * (diffuse )) * surfaceColor + specular * (1.0 - shadow);
 
   outColor = vec4(lighting, 1.0);
 }
