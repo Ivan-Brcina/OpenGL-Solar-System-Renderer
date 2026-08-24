@@ -89,7 +89,6 @@ void SolarSystem::run() {
     currentTime = glfwGetTime();
     deltaTime = currentTime - lastFrameTime;
     lastFrameTime = currentTime;
-    processInput(window_, camera);
     camera->processCameraDirMovement(window_, deltaTime);
 
     updatePositions(deltaTime); 
@@ -98,6 +97,7 @@ void SolarSystem::run() {
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     
+    processInput(window_, camera);
     glfwPollEvents();
     glfwSwapBuffers(window_);
   }

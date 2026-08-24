@@ -3,7 +3,7 @@ CXXFLAGS = -Iheaders -Wall
 
 SRC = ./src
 OBJ = ./build
-TARGET = rgZavrsni.exe
+TARGET = solarSystem.exe
 
 SOURCES = $(shell find $(SRC) -name '*.cpp')
 

@@ -22,6 +22,9 @@ void setupDearImGui(GLFWwindow* window);
 void processInput(GLFWwindow* window, std::unique_ptr<Camera>& camera);
 GLuint textureFromFile(const char* path, bool isColorTex = true);
 void generateUVSphere(float radius, unsigned int sectors, unsigned int stacks,
+
                                      std::vector<Vertex>& outVertices, std::vector<unsigned int>& outIndices);
+
+void takeScreenShot(GLFWwindow* window, const char* path);
 GLuint loadCubemap(std::vector<std::string>& paths);
 void setupDebuggingMessages();

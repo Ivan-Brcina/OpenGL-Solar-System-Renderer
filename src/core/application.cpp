@@ -4,9 +4,12 @@
 #include "../../headers/imgui/imgui.h"
 #include "../../headers/imgui/imgui_impl_glfw.h"
 #include "../../headers/imgui/imgui_impl_opengl3.h"
+#include <GLFW/glfw3.h>
 
 #define STB_IMAGE_IMPLEMENTATION
+#define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "../../headers/core/stb_image.h"
+#include "../../headers/core/stb_image_write.h"
 
 #include <iostream>
 
@@ -17,7 +20,15 @@ GLFWwindow* openGlInit() {
 
   GLFWmonitor* monitor = glfwGetPrimaryMonitor();
   const GLFWvidmode* mode = glfwGetVideoMode(monitor);
-  GLFWwindow* window = glfwCreateWindow(mode->width, mode->height, "Advanced Lighting", monitor, NULL);
+
+  glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
+  glfwWindowHint(GLFW_RED_BITS, mode->redBits);
+  glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
+  glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
+  glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
+
+  GLFWwindow* window = glfwCreateWindow(mode->width, mode->height, "Solar System Renderer", NULL, NULL);
+  glfwSetWindowPos(window, 0, 0);
   glfwMakeContextCurrent(window); 
 
   glfwSwapInterval(1);
@@ -80,16 +91,26 @@ GLuint textureFromFile(const char* path, bool isColorTex) {
   return textureId;
 }
 
+void takeScreenShot(GLFWwindow* window, const char* path) {
+  int w, h;
+  glfwGetFramebufferSize(window, &w, &h);
+  std::vector<unsigned char> pixels(w * h * 3);
+  glPixelStorei(GL_PACK_ALIGNMENT, 1);
+  glReadPixels(0, 0, w, h, GL_RGB, GL_UNSIGNED_BYTE, pixels.data());
+  stbi_flip_vertically_on_write(true);
+  if(!stbi_write_png(path, w, h, 3, pixels.data(), w * 3))
+    std::cout << "Failed to write with stbi_write_png" << std::endl;
+}
+
 void processInput(GLFWwindow* window, std::unique_ptr<Camera>& camera) {
   static bool tabPrev = false;
-  bool tabPressed = glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS;
+  static bool f12Prev = false;
 
+  bool tabPressed = glfwGetKey(window, GLFW_KEY_TAB) == GLFW_PRESS;
   if(tabPressed && !tabPrev) {
     camera->cursorEnabled = !camera->cursorEnabled;
-
     glfwSetInputMode(window, GLFW_CURSOR, 
         camera->cursorEnabled ? GLFW_CURSOR_NORMAL : GLFW_CURSOR_DISABLED);
-
     ImGuiIO& io = ImGui::GetIO();
     if(!camera->cursorEnabled) {
       camera->_firstMouse = true;
@@ -98,11 +119,19 @@ void processInput(GLFWwindow* window, std::unique_ptr<Camera>& camera) {
       io.ConfigFlags &= ~ImGuiConfigFlags_NoMouse;
     }
   }
-
   tabPrev = tabPressed;
+
+  bool f12Pressed = glfwGetKey(window, GLFW_KEY_F12) == GLFW_PRESS;
+
+  if(f12Pressed && !f12Prev) {
+    std::cout << "Pressed f12" << std::endl;
+    takeScreenShot(window, "screenshot.png");
+  }
+  f12Prev = f12Pressed;
 
   if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) 
     glfwSetWindowShouldClose(window, GL_TRUE);
+
 }
 
 void setupDearImGui(GLFWwindow* window) {
