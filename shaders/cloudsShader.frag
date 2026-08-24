@@ -23,7 +23,8 @@ float calculateShadow(vec4 fragPositionLightSpace) {
   float bias = max(0.001 * (1.0 - dot(Normal, lightDirection)), 0.0001);
   float shadow = 0.0;
   vec2 texelSize = 1.0 / textureSize(depthMap, 0);
-  int range = 8;
+
+  int range = 3;
   for (int x = -range; x <= range; ++x)
       for (int y = -range; y <= range; ++y) {
         float pcfDepth = texture(depthMap, projCoords.xy + vec2(x, y) * texelSize).r;
