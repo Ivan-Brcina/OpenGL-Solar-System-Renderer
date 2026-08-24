@@ -67,12 +67,9 @@ void SolarSystem::drawGUI() {
   ImGui_ImplOpenGL3_NewFrame();
   ImGui_ImplGlfw_NewFrame();
   ImGui::NewFrame();
-  ImGui::Begin("My Window");
-  ImGui::SliderFloat("Spread", &sun.blurSpread, 3.0f, 100.0f, NULL ,ImGuiSliderFlags_NoInput);
-  ImGui::SliderFloat("Emissive Strength", &sun.emissionStrength, 1.0f, 100.0f, NULL ,ImGuiSliderFlags_NoInput);
+  ImGui::Begin("Config");
   ImGui::SliderFloat("Exposure", &sun.exposure, 0.1f, 5.0f, NULL ,ImGuiSliderFlags_NoInput);
   ImGui::SliderFloat("CameraSpeed", &camera->_speed, 1.0f, 15.0f, NULL ,ImGuiSliderFlags_NoInput);
-  ImGui::Checkbox("Togggle Normal Mapping", &earth.toggleNormalMapping);
   ImGui::SliderFloat("Days per second", &daysPerSecond, 0.01f, 10.0f, NULL, ImGuiSliderFlags_NoInput);
   ImGui::Text("Framerate: %f", ImGui::GetIO().Framerate);
 

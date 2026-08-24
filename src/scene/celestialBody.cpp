@@ -8,7 +8,7 @@ Sun::Sun(GLuint vao, unsigned int idxCount) : vao(vao), idxCount(idxCount) {
   spinSpeed = 180.0f;
   spinAngle = 0.0f;
   blurSpread = 3.0f;
-  emissionStrength = 20.0f;
+  emissionStrength = 5.0f;
   exposure = 0.25f;
   diffuseTexture = textureFromFile("assets/8k_sun.jpg");
 }
