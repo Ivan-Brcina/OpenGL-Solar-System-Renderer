@@ -36,9 +36,6 @@ unsigned int Mesh::createSphere(GLuint& vao,
   glEnableVertexAttribArray(2);
   glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texCoords));
 
-  glEnableVertexAttribArray(3);
-  glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, tangent));
-
   glBindVertexArray(0);
   
   return idxCount;
@@ -66,8 +63,6 @@ unsigned int Mesh::generateUVSphere(float radius, unsigned int sectors, unsigned
       vertex.normal = glm::normalize(vertex.position);
 
       vertex.texCoords = glm::vec2(u, v);
-
-      vertex.tangent = glm::vec3(1.0f, 0.0f, 0.0f);
       vertices.push_back(vertex);
     }
   }

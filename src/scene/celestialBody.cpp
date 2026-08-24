@@ -28,7 +28,6 @@ Earth::Earth(GLuint vao, unsigned int idxCount) : vao(vao), idxCount(idxCount) {
   diffuseTextureNight = textureFromFile("assets/8k_earth_nightmap.jpg");
   diffuseTextureClouds = textureFromFile("assets/8k_earth_clouds.jpg");
   specularMap = textureFromFile("assets/2k_earth_specular_map.png", false);
-  toggleNormalMapping = false;
 }
 
 Moon::Moon(GLuint vao, unsigned int idxCount) : vao(vao), idxCount(idxCount) {
