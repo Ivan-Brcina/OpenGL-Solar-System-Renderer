@@ -71,7 +71,7 @@ Currently built and tested on **Windows with MinGW-w64** (`g++`). Required DLLs 
 ```bash
 git clone https://github.com/Ivan-Brcina/OpenGL-Solar-System-Renderer.git
 cd OpenGL-Solar-System-Renderer
-make solarSystem
+make solarSystem.exe
 ./solarSystem.exe
 ```
 
