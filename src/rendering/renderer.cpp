@@ -40,10 +40,4 @@ void Renderer::render(Sun& sun, Earth& earth, Moon& moon, Stars& stars,
                    shadowPass.getDepthMap(), shadowPass.getLightSpaceTransform()); 
   bloomPass.render(sun, scenePass.getBrightColorBuffer());
   finalPass.render(scenePass.getHDRColorBuffer(), bloomPass.getFinalBlurColor(), sun.exposure);
-
-  // GLenum err = glGetError();
-  // if (err != GL_NO_ERROR) {
-  //   std::cout << "GL error in Renderer::render -> " << err << std::endl;
-  // }
-
 }

@@ -1,66 +1,7 @@
 #include "../../headers/scene/camera.hpp"
 #include <GLFW/glfw3.h>
 
-#include <iostream>
-
 Camera* Camera::currCam = nullptr;
-
-// Camera::Camera() 
-//   :
-//     up_(0.0f, 1.0f, 0.0f),
-//     radius_(7.0f),
-//     previousX_(0.0f),
-//     previousY_(0.0f),
-//     firstClick_(true)
-// {
-//   position_ = glm::vec3(0.0f, 5.0f, radius_);
-// }
-//
-// glm::mat4 Camera::getView() const {
-//   return glm::lookAt(position_, glm::vec3(0.0f,0.0f,0.0f), up_);
-// }
-//
-// glm::mat4 Camera::getProjection(float vw, float vh) const {
-//   return glm::perspective(glm::radians(60.0f), vw / vh, 0.1f, 100.0f);
-// }
-//
-// void Camera::mouseCallback(GLFWwindow* window, double xPos, double yPos) {
-//
-//   if(!currCam) return;
-//
-//   if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE) {
-//
-//     currCam->firstClick_ = true;
-//      return;
-//
-//   } else {
-//
-//     float sensitivity = 0.1f;
-//
-//     if(currCam->firstClick_) {
-//       currCam->previousX_ = xPos;
-//       currCam->previousY_ = yPos;
-//       currCam->firstClick_ = false;
-//       return;
-//     }
-//
-//     float xOffset = (xPos - currCam->previousX_) * sensitivity;
-//     float yOffset = (currCam->previousY_ - yPos) * sensitivity;
-//
-//     currCam->previousX_ = xPos;
-//     currCam->previousY_ = yPos;
-//
-//     glm::vec3 rightAxis = glm::normalize(glm::cross(currCam->position_, currCam->up_));
-//     glm::quat q1 = glm::angleAxis(glm::radians(yOffset), rightAxis);
-//
-//     glm::vec3 rotationAxis = currCam->up_;
-//     glm::quat q2 = glm::angleAxis(glm::radians(xOffset), rotationAxis);
-//
-//     currCam->position_ = q1 * q2 * currCam->position_;
-//     currCam->up_ = q1 * q2 * currCam->up_;
-//   }
-//
-// }
 
 Camera::Camera() 
   : _position(0.0f, 20.0f, 0.0f),

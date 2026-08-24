@@ -21,7 +21,6 @@ float calculateShadow(vec4 fragPositionLightSpace) {
     return 0.0f;
 
   float bias = max(0.001 * (1.0 - dot(Normal, lightDirection)), 0.0001);
-  // float shadow = currentDepth - bias > closestDepthValue ? 1.0 : 0.0;
   float shadow = 0.0;
   vec2 texelSize = 1.0 / textureSize(depthMap, 0);
   for (int x = -1; x <= 1; ++x) {
@@ -39,6 +38,5 @@ void main() {
   float diff = max(dot(Normal, lightDirection), 0.0);
   float ambient = 0.01;
   float shadow = calculateShadow(lightSpaceFragPos);
-  // outColor = vec4(texture(moonDiffuse, TexCoords).rgb * (diff + ambient) * (1.0 - shadow), 1.0);
   outColor = vec4(texture(moonDiffuse, TexCoords).rgb * (ambient + (1.0 - shadow) * diff), 1.0);
 }

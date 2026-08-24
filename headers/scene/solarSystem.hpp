@@ -18,7 +18,6 @@ class SolarSystem {
     Stars stars;
 
     GLuint sphereVAO, sphereVBO, sphereEBO;
-    // GLuint orbitVAO_, orbitVBO_;
     GLuint skyboxVAO, skyboxVBO;
 
     std::unique_ptr<Camera> camera;

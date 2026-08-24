@@ -21,6 +21,3 @@ class FinalPass {
 
 };
 
-//This phase will blend the bloom color and the standard colors 
-//then draw the quad on the screen which will be have the colors[1]
-//array from the scenePass as the entire texture

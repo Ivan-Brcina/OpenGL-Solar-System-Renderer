@@ -11,7 +11,7 @@ unsigned int Mesh::createSphere(GLuint& vao,
 
   std::vector<Vertex> vertices;
   std::vector<unsigned int> indices;
-  vertices.reserve((stacks + 1) * (sectors + 1)); //TODO high possibility of a bug
+  vertices.reserve((stacks + 1) * (sectors + 1));
   indices.reserve(stacks * sectors * 6);
 
   unsigned int idxCount = generateUVSphere(radius, sectors, stacks, vertices, indices);
@@ -67,11 +67,6 @@ unsigned int Mesh::generateUVSphere(float radius, unsigned int sectors, unsigned
 
       vertex.texCoords = glm::vec2(u, v);
 
-      // if (std::sin(phi) < 1e-5f) {
-      //     vertex.tangent = glm::vec3(1.0f, 0.0f, 0.0f);
-      // } else {
-      //     vertex.tangent = glm::normalize(glm::vec3(std::sin(theta), 0.0f, -std::cos(theta)));
-      // }
       vertex.tangent = glm::vec3(1.0f, 0.0f, 0.0f);
       vertices.push_back(vertex);
     }

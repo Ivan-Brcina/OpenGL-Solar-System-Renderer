@@ -13,7 +13,7 @@ SolarSystem::SolarSystem() {
   Mesh meshGenerator;
   unsigned int idxCount;
   idxCount = meshGenerator.createSphere(sphereVAO, sphereVBO, sphereEBO,
-                                        5.0f, 128 * 4, 64 * 4); //TODO lower later if bad framerate
+                                        5.0f, 128 * 4, 64 * 4);
   sun = Sun(sphereVAO, idxCount);
   earth = Earth(sphereVAO, idxCount);
   moon = Moon(sphereVAO, idxCount);
@@ -94,11 +94,6 @@ void SolarSystem::run() {
     lastFrameTime = currentTime;
     processInput(window_, camera);
     camera->processCameraDirMovement(window_, deltaTime);
-
-    // // glm::vec3 cameraPosition = earth.center - (0.15f * earth.center) + glm::vec3(0.0f,5.0f,5.0f); //TODO temporary
-    // glm::vec3 cameraPosition = earth.center + (5.0f * glm::normalize(glm::cross(earth.center, glm::vec3(0.0f,1.0f,0.0f))));
-                                                                                                  
-    // camera->setPosition(cameraPosition);
 
     updatePositions(deltaTime); 
     renderer.render(sun, earth, moon, stars, camera);

@@ -20,7 +20,7 @@ private:
 
 public:
   Shader() = default;
-  //Izmijeni kurati default initalizer TODO
+  //Izmijeni default initalizer TODO
   Shader(const std::string& vertexShSource, 
          const std::string& fragmentShSource, 
          const std::string& tessellationShSource = "");

@@ -4,31 +4,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
 
-
-// class Camera {
-//   private:
-//     static Camera *currCam;
-//
-//     glm::vec3 up_;
-//     float radius_;
-//
-//     glm::vec3 position_;
-//     float rotationSpeed_;
-//
-//     float previousX_;
-//     float previousY_;
-//     bool firstClick_;
-//
-//   public:
-//     Camera();
-//     glm::mat4 getView() const;
-//     glm::mat4 getProjection(float vw, float vh) const;
-//     void processCameraDirMovement(GLFWwindow *window, float deltaTime);
-//     static void mouseCallback(GLFWwindow *window, double xPos, double yPos);
-//
-//     void setView(const glm::vec3 &pos, const glm::vec3 &front, const glm::vec3 &up);
-// };
-
 class Camera {
 private:
   static Camera *currCam;
